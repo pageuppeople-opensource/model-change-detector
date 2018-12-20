@@ -16,7 +16,7 @@ py mcd.py [options] <command> [command-parameters]
 - `command` is the function to be performed by the utility. The currently supported values are:
   - `start`: Marks the start of a new execution by creating a record for the same in the given database. Returns an `execution-id` which is a GUID identifier of the new execution.
     - `db-connection-string`: a [PostgreSQL Db Connection String](http://docs.sqlalchemy.org/en/latest/dialects/postgresql.html#module-sqlalchemy.dialects.postgresql.psycopg2) of the format `postgresql+psycopg2://user:password@host:port/dbname`
-  - `get-last-successful-execution`: Finds the last successful data pipeline execution. Returns an `execution-id` which is a GUID identifier of the new execution.
+  - `get-last-successful-execution`: Finds the last successful data pipeline execution. Returns an `execution-id` which is a GUID identifier of the execution.
     - `db-connection-string`: a [PostgreSQL Db Connection String](http://docs.sqlalchemy.org/en/latest/dialects/postgresql.html#module-sqlalchemy.dialects.postgresql.psycopg2) of the format `postgresql+psycopg2://user:password@host:port/dbname`
   - `finish`: Marks the completion of an existing execution by updating a record for the same in the given database. Returns nothing unless there's an error.
     - `db-connection-string`: a [PostgreSQL Db Connection String](http://docs.sqlalchemy.org/en/latest/dialects/postgresql.html#module-sqlalchemy.dialects.postgresql.psycopg2) of the format `postgresql+psycopg2://user:password@host:port/dbname`
