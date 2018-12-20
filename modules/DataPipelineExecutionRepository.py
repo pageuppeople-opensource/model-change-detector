@@ -20,12 +20,12 @@ class DataPipelineExecutionRepository(BaseObject):
         session.commit()
         return data_pipeline_execution
 
-    def get_last_successful_data_load_execution(self):
+    def get_last_successful_data_pipeline_execution(self):
         session = self.session_maker()
         return session.query(DataPipelineExecutionEntity)\
             .filter_by(status=Constants.DataPipelineExecutionStatus.COMPLETED_SUCCESSFULLY)\
-            .order_by(desc(DataPipelineExecutionEntity.created_on))\
             .order_by(desc(DataPipelineExecutionEntity.last_updated_on))\
+            .order_by(desc(DataPipelineExecutionEntity.created_on))\
             .first()
 
     def finish_existing(self, execution_id):

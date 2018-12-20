@@ -3,6 +3,7 @@ import logging
 from modules import Shared
 from modules.Shared import Constants
 from modules.BaseObject import BaseObject
+from modules.commands.GetLastSuccessfulExecutionCommand import GetLastSuccessfulExecutionCommand
 from modules.commands.StartCommand import StartCommand
 from modules.commands.FinishCommand import FinishCommand
 
@@ -22,6 +23,9 @@ class ModelChangeDetector(BaseObject):
     def __process_start_command(self):
         StartCommand(self.args.db_connection_string).execute()
 
+    def __process_get_last_successful_execution_command(self):
+        GetLastSuccessfulExecutionCommand(self.args.db_connection_string).execute()
+
     def __process_finish_command(self):
         FinishCommand(self.args.db_connection_string, self.args.execution_id).execute()
 
@@ -38,6 +42,15 @@ class ModelChangeDetector(BaseObject):
         start_command_parser = subparsers.add_parser('start', help='help text for \'start\' command')
         start_command_parser.set_defaults(func=self.__process_start_command)
         self.__get_default_command_arguments(start_command_parser)
+
+        get_last_successful_execution_command_parser = subparsers.add_parser('get-last-successful-execution',
+                                                                             help='help text for '
+                                                                                  '\'get-last-successful'
+                                                                                  '-execution\' '
+                                                                                  'command')
+        get_last_successful_execution_command_parser.set_defaults(
+            func=self.__process_get_last_successful_execution_command)
+        self.__get_default_command_arguments(get_last_successful_execution_command_parser)
 
         finish_command_parser = subparsers.add_parser('finish', help='help text for \'finish\' command')
         finish_command_parser.set_defaults(func=self.__process_finish_command)
@@ -56,4 +69,3 @@ class ModelChangeDetector(BaseObject):
                                     metavar='db-connection-string',
                                     help='provide in PostgreSQL & Psycopg format, '
                                          'postgresql+psycopg2://username:password@host:port/dbname')
-
