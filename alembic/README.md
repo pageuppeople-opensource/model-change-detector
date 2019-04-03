@@ -10,7 +10,7 @@ alembic -x $DESTINATION_DB_URL upgrade head
 
 ### Updating the schema
 
-Ensure any new tables inherit from the same BaseEntity used in `alembic/env.py`
+Ensure any new tables inherit from the same Base used in `alembic/env.py`
 
 ```python
 from dpo.Shared import BaseEntity
@@ -20,7 +20,7 @@ Whenever you make a schema change, run
 
 ```bash
 pip install .
-alembic -x $DESTINATION_DB_URL revision -m "$REVION_MESSAGE" --autogenerate
+alembic -x $DESTINATION_DB_URL revision -m "$REVISION_MESSAGE" --autogenerate
 ```
 
 check that the new version in `alembic/versions` is correct
@@ -48,7 +48,7 @@ Try editing the function `use_schema` in `alembic/env.py`, this determines what 
 
 ### New models aren't showing up in upgrade section
 
-Ensure all model classes inherit from the same BaseEntity that `alembic/env.py` imports, and that the following class
+Ensure all model classes inherit from the same Base that `alembic/env.py` imports, and that the following class
 properties are set
 
 ```python
@@ -61,4 +61,14 @@ Also try importing the models into `alembic/env.py`, eg
 ```python
 from dpo.entities import ModelChecksumEntity
 from dpo.entities import DataPipelineExecutionEntity
+```
+
+### Alembic won't pick up my change
+
+[Alembic only supports some changes](https://alembic.sqlalchemy.org/en/latest/autogenerate.html#what-does-autogenerate-detect-and-what-does-it-not-detect)
+
+Try adding raw sql in the `upgrade()` and `downgrade()` functions of your revision
+
+```python
+op.execute(RAW_SQL)
 ```
