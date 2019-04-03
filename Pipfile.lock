@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "5f5e426f728b7dc7377e600d7b1001a891dfe3d21c237efe7290238832482089"
+            "sha256": "845a7d0c3c01cd3faa544134b35e29c6d1d74a45b839c006ae94aa85a4199640"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -22,6 +22,9 @@
             ],
             "index": "pypi",
             "version": "==1.0.8"
+        },
+        "dpo": {
+            "path": "."
         },
         "mako": {
             "hashes": [
