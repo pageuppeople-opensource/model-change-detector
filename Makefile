@@ -2,7 +2,7 @@
 install_deps:
 	pip install pipenv --upgrade
 	pipenv install --dev
-	alembic -x postgresql+psycopg2://postgres:travisci@localhost:5432/postgres upgrade head
+	alembic -c dpo/alembic.ini -x postgresql+psycopg2://postgres:travisci@localhost:5432/postgres upgrade head
 
 # Run unit tests
 test_unit:

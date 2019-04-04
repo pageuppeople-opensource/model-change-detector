@@ -5,7 +5,7 @@
 ### To upgrade to the latest schema
 
 ```bash
-alembic -x $DESTINATION_DB_URL upgrade head
+alembic -c dpo/alembic.ini -x $DESTINATION_DB_URL upgrade head
 ```
 
 ### Updating the schema
@@ -20,7 +20,7 @@ Whenever you make a schema change, run
 
 ```bash
 pip install .
-alembic -x $DESTINATION_DB_URL revision -m "$REVISION_MESSAGE" --autogenerate
+alembic -c dpo/alembic.ini -x $DESTINATION_DB_URL revision -m "$REVISION_MESSAGE" --autogenerate
 ```
 
 check that the new version in `alembic/versions` is correct
@@ -30,10 +30,10 @@ check that the new version in `alembic/versions` is correct
 Whenever you want to downgrade the schema
 
 ```bash
-alembic -x $DESTINATION_DB_URL history # see the list of revision ids
-alembic -x $DESTINATION_DB_URL current # see the current revision id
-alembic -x $DESTINATION_DB_URL downgrade -1 # revert back one revision
-alembic -x $DESTINATION_DB_URL downgrade $revision_id # revert back to a revision id, found using the history command
+alembic -c dpo/alembic.ini -x $DESTINATION_DB_URL history # see the list of revision ids
+alembic -c dpo/alembic.ini -x $DESTINATION_DB_URL current # see the current revision id
+alembic -c dpo/alembic.ini -x $DESTINATION_DB_URL downgrade -1 # revert back one revision
+alembic -c dpo/alembic.ini -x $DESTINATION_DB_URL downgrade $revision_id # revert back to a revision id, found using the history command
 ```
 
 ## Troubleshooting
