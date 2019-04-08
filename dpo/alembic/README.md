@@ -19,7 +19,7 @@ from dpo.Shared import BaseEntity
 Whenever you make a schema change, run
 
 ```bash
-pip install .
+pipenv install .
 alembic -c dpo/alembic.ini -x $DESTINATION_DB_URL revision -m "$REVISION_MESSAGE" --autogenerate
 ```
 
