@@ -7,7 +7,7 @@ from dpo import Shared
 
 
 class ExecutionEntity(Shared.BaseEntity):
-    TABLE_NAME = 'data_pipeline_execution'
+    TABLE_NAME = 'execution'
     PRIMARY_KEY_COL_NAME = 'id'
 
     __tablename__ = TABLE_NAME

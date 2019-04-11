@@ -7,7 +7,7 @@ from dpo.entities import ExecutionEntity
 
 
 class ExecutionModelEntity(Shared.BaseEntity):
-    TABLE_NAME = 'model_checksum'
+    TABLE_NAME = 'execution_model'
 
     __tablename__ = TABLE_NAME
     __table_args__ = {'schema': Constants.DATA_PIPELINE_EXECUTION_SCHEMA_NAME}
