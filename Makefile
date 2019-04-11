@@ -12,5 +12,5 @@ test_unit:
 test_integration:
 	./tests/integration/test_integration.sh
 
-test_dowgrade_schema:
+test_downgrade_schema:
 	alembic -c dpo/alembic.ini -x postgresql+psycopg2://postgres:travisci@localhost:5432/postgres downgrade base
