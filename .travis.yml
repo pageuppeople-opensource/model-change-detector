@@ -5,10 +5,9 @@ env:
   - PIPENV_VERBOSITY=-1
 services: postgresql
 before_install:
+  - psql -d postgres -U postgres -c "SELECT version() as PostgreSQL_VERSION;"
   - psql -d postgres -U postgres -a -v ON_ERROR_STOP=1 -f ./tests/integration/setup-part1.sql
   - psql -d integration_test_db -U postgres -a -v ON_ERROR_STOP=1 -f ./tests/integration/setup-part2.sql
-  - psql -U postgres -d postgres -c "SELECT version() as PostgreSQL_VERSION, uuid_generate_v4() AS RANDOM_UUID;"
-  - psql -U integration_test_db -d postgres -c "SELECT version() as PostgreSQL_VERSION, uuid_generate_v4() AS RANDOM_UUID;"
 install: make install_deps
 script:
   - make test_unit
