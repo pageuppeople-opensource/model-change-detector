@@ -137,7 +137,7 @@ then some how, run the following scripts in the postgresql instance within docke
 ./tests/integration/setup-part2.sql
 ```
 
-and then, runt he following commands (if you have `make`) to run tests.
+and then, run the following commands (if you have `make`) to run tests.
 ```
 $ make test_integration
 $ docker stop stubdatabase
