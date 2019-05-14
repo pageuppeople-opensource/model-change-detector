@@ -4,10 +4,10 @@ python: 3.7
 env:
   - PIPENV_VERBOSITY=-1
 services: postgresql
-install: make install_deps
-before_script:
+before_install:
  - psql -d postgres -U postgres -a -v ON_ERROR_STOP=1 -f ./tests/integration/setup-part1.sql
  - psql -d integration_test_db -U postgres -a -v ON_ERROR_STOP=1 -f ./tests/integration/setup-part2.sql
+install: make install_deps
 script:
   - make test_unit
   - make test_integration
