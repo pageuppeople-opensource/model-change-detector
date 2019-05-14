@@ -1,3 +1,6 @@
+-- create extensions
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 -- create user
 CREATE USER integration_test_user WITH ENCRYPTED PASSWORD 'integration_test_password';
 
