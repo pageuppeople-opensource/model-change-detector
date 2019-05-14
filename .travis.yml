@@ -6,9 +6,8 @@ env:
 services: postgresql
 before_install:
   - psql -d postgres -U postgres -a -v ON_ERROR_STOP=1 -f ./tests/integration/setup-part1.sql
+  - psql -d integration_test_db -U postgres -a -v ON_ERROR_STOP=1 -f ./tests/integration/setup-part2.sql
 install: make install_deps
-before_script:
-  - psql -d postgres -U postgres -a -v ON_ERROR_STOP=1 -f ./tests/integration/setup-part2.sql
 script:
   - make test_unit
   - make test_integration

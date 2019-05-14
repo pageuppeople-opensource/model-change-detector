@@ -1,4 +1,6 @@
--- grant all access to test user within app schema
-GRANT USAGE ON SCHEMA dpo TO integration_test_user;
-GRANT ALL PRIVILEGES ON ALL tables IN SCHEMA dpo TO integration_test_user;
-GRANT ALL PRIVILEGES ON ALL sequences IN SCHEMA dpo TO integration_test_user;
+-- create user
+CREATE USER integration_test_user WITH ENCRYPTED PASSWORD 'integration_test_password';
+
+-- setup user
+GRANT CONNECT ON DATABASE integration_test_db TO integration_test_user;
+GRANT CREATE ON DATABASE integration_test_db TO integration_test_user;
