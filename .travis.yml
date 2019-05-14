@@ -1,16 +1,8 @@
 dist: xenial
 language: python
 python: 3.7
-addons:
-  postgresql: "10"
-  apt:
-    packages:
-    - postgresql-10
-    - postgresql-client-10
 env:
   - PIPENV_VERBOSITY=-1
-  global:
-  - PGPORT=5433
 services: postgresql
 before_install:
   - psql -d postgres -U postgres -a -v ON_ERROR_STOP=1 -f ./tests/integration/setup-part1.sql
