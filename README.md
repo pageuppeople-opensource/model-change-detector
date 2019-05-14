@@ -124,11 +124,21 @@ $ ./tests/integration/test_integration.sh
 
 #### Docker
 
-If Docker is installed, running tests is as simple as running the following commands:
+If Docker is installed, running tests is as "simple" as running the following commands:
 
 ```
 $ docker pull postgres
 $ docker run --name stubdatabase -p 5432:5432 -e POSTGRES_PASSWORD=travisci -d postgres
+```
+
+then some how, run the following scripts in the postgresql instance within docker. these create a test database and user for integration tests.
+```
+./tests/integration/setup-part1.sql
+./tests/integration/setup-part2.sql
+```
+
+and then, runt he following commands (if you have `make`) to run tests.
+```
 $ make test_integration
 $ docker stop stubdatabase
 $ docker remove stubdatabase
