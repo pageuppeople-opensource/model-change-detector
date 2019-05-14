@@ -7,4 +7,3 @@ CREATE USER integration_test_user WITH ENCRYPTED PASSWORD 'integration_test_pass
 -- setup user
 GRANT CONNECT ON DATABASE postgres TO integration_test_user;
 GRANT CREATE ON DATABASE postgres TO integration_test_user;
-
